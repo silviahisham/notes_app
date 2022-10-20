@@ -1,10 +1,9 @@
 package com.silviahisham.notesapp.utils
 
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
+import java.text.SimpleDateFormat
 import java.util.*
 
-fun LocalDateTime.formatDate(): String {
-    val formatter = DateTimeFormatter.ofPattern("EEE, d MMM hh:mm a", Locale.getDefault())
-    return format(formatter)
+fun Date.formatDate(): String {
+    val formatter = SimpleDateFormat("EEE, d MMM hh:mm aaa", Locale.getDefault())
+    return formatter.format(this)
 }

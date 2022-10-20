@@ -6,7 +6,9 @@ import androidx.activity.compose.setContent
 import androidx.compose.ui.ExperimentalComposeUiApi
 import com.silviahisham.notesapp.screens.NotesScreen
 import com.silviahisham.notesapp.ui.theme.NotesAppTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 @ExperimentalComposeUiApi
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
