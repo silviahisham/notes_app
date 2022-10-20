@@ -1,4 +1,4 @@
-package com.silviahisham.notesapp.screens
+package com.silviahisham.notesapp.screens.notes
 
 import android.widget.Toast
 import androidx.compose.foundation.layout.Column
@@ -27,7 +27,9 @@ import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 import com.silviahisham.notesapp.R
 import com.silviahisham.notesapp.components.AppBar
 import com.silviahisham.notesapp.components.NoteButton
@@ -40,7 +42,7 @@ import com.silviahisham.notesapp.utils.formatDate
 @ExperimentalComposeUiApi
 @Composable
 fun NotesScreen() {
-    val viewModel: NotesViewModel = viewModel()
+    val viewModel = hiltViewModel<NotesViewModel>()
     val notesList = viewModel.getNotes().collectAsState().value
     val context = LocalContext.current
     val keyboardController = LocalSoftwareKeyboardController.current

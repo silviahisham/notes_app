@@ -1,4 +1,4 @@
-package com.silviahisham.notesapp.screens
+package com.silviahisham.notesapp.screens.notes
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
