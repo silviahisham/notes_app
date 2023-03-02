@@ -5,7 +5,6 @@ import androidx.lifecycle.viewModelScope
 import com.silviahisham.notesapp.data.NoteRepository
 import com.silviahisham.notesapp.model.Note
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
@@ -18,7 +17,7 @@ class NotesViewModel @Inject constructor(
     private val notesList = MutableStateFlow<List<Note>>(emptyList())
 
     init {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             noteRepository.getAllNotes().collect { notes ->
                 notesList.value = notes
             }
@@ -28,8 +27,14 @@ class NotesViewModel @Inject constructor(
     fun getNotes() = notesList.asStateFlow()
 
     fun addNote(note: Note) {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             noteRepository.addNote(note)
+        }
+    }
+
+    fun deleteNote(note: Note) {
+        viewModelScope.launch {
+            noteRepository.deleteNote(note)
         }
     }
 }

@@ -95,7 +95,9 @@ fun NotesScreen() {
 
                 LazyColumn {
                     items(notesList) { note ->
-                        NoteItem(note = note)
+                        NoteItem(note = note) {
+                            viewModel.deleteNote(note)
+                        }
                     }
                 }
             }
@@ -103,31 +105,10 @@ fun NotesScreen() {
     }
 }
 
-@Composable
-fun NoteItem(note: Note) {
-    Surface(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(8.dp),
-        color = TealLight,
-        shape = RoundedCornerShape(8.dp)
-    ) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp)
-        ) {
-            Text(text = note.title, style = MaterialTheme.typography.subtitle2)
-            Text(text = note.description, style = MaterialTheme.typography.subtitle1)
-            Text(text = note.date.formatDate(), style = MaterialTheme.typography.caption)
-        }
-    }
-}
-
 @ExperimentalComposeUiApi
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview() {
+private fun NotesScreenPreview() {
     NotesAppTheme {
         NotesScreen()
     }
